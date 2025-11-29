@@ -17,6 +17,7 @@ Data Source:
 - Ingestion Method: Google Cloud Storage (GCS) -> Fivetran -> Databricks
 
 *DATA LAKEHOUSE ARCHITECTURE*
+
 The pipeline follows the industry-standard Medallion Architecture:
 - Bronze Layer (Raw): Stores the raw, exact copy of the data ingested via Fivetran from GCS.
     - Table: workspace.fhv_data_pipeline.raw_fhv_trips
@@ -26,6 +27,7 @@ The pipeline follows the industry-standard Medallion Architecture:
     - Table: gold_base_performance
 
 *PIPELINE IMPLEMENTATION STEPS*
+
 1. *Silver Layer: Data Quality and Transformation (PySpark)*
    With this step, I cleansed the raw data and transformed the key fields. The code performs filtering for data reliability.
    Key Operations:
@@ -54,4 +56,4 @@ df_silver_clean = df_silver.filter(
     # Remove trips where dropoff occurred before pickup (temporal inconsistency)
     (col("tpep_dropoff_datetime") >= col("tpep_pickup_datetime"))
 ```
-2. *Gold Layer: Operational Analytics (Advanced SQL)*
+2. **Gold Layer: Operational Analytics (Advanced SQL)**
