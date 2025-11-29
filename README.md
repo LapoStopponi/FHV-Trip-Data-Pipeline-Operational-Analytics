@@ -31,8 +31,8 @@ PIPELINE IMPLEMENTATION STEPS
    - Type Casting: I renamed and utilized existing timestamp columns(tpep_pickup_datetime, tpwp_dropoff_datetime)
    - Filtering: I removed records with null or zero location IDs (pulocation_id, dolocation_id) and temporal inconsistencies (where droppoff time
      was before pickup time)
-'''python
+```python
 # Rename existing, correctly typed timestamp columns to standard analysis names.
 df_silver = df_bronze.withColumnRenamed("pickup_datetime", "tpep_pickup_datetime") \
                      .withColumnRenamed("drop_off_datetime", "tpep_dropoff_datetime") 
-'''
+```
