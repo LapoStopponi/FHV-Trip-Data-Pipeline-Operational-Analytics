@@ -3,19 +3,19 @@ In this project, I implemented an end-to-end Data Lakehouse ETL pipeline (Bronze
 The primary goal of the project was to process a large and real world transportation dataset (1.33 GB) to derive actionable
 business intelligence, demonstrating proficiency in data engineering fundamentals, data reliability, and advanced analytical SQL.
 
-KEY SKILLS DEMONSTRATED
+###KEY SKILLS DEMONSTRATED
 - Data Engineering fundamentals: Bypassed cloud environment limitations by leveraging cloud storage (GCS) and automated ingestion (Fivetran)
 - Scalability and Processing: Handled a large-scale dataset (23M+ records) efficiently using PySpark and Delta Lake
 - Data Reliability: Implemented rigorous data quality checks (Layer Silver)
 - Advanced Analytics: Used Windows functions (LAG, RANK) and CTEs in SQL to calculate key operational metrics.
 
-DATA SOURCE AND ARCHITECTURE
+###DATA SOURCE AND ARCHITECTURE
 Data Source:
 - Dataset: NYC FHV (For-Hire Vehicle) Trip for January 2019
 - Volume: 1.33 GB (23.143.222 records)
 - Ingestion Method: Google Cloud Storage (GCS) -> Fivetran -> Databricks
 
-DATA LAKEHOUSE ARCHITECTURE
+###DATA LAKEHOUSE ARCHITECTURE
 The pipeline follows the industry-standard Medallion Architecture:
 - Bronze Layer (Raw): Stores the raw, exact copy of the data ingested via Fivetran from GCS.
     - Table: workspace.fhv_data_pipeline.raw_fhv_trips
@@ -24,7 +24,7 @@ The pipeline follows the industry-standard Medallion Architecture:
 - Gold Layer (Aggregated/Business Metrics): Stores final aggregated metrics and calculated features used for reporting and business decisions.
     - Table: gold_base_performance
 
-PIPELINE IMPLEMENTATION STEPS
+###PIPELINE IMPLEMENTATION STEPS
 1) Silver Layer: Data Quality and Transformation (PySpark)
    With this step, I cleansed the raw data and transformed the key fields. The code performs filtering for data reliability.
    Key Operations:
